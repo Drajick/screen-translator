@@ -22,18 +22,11 @@ jobs:
         with:
           gradle-version: "8.7"
 
-      - name: Susun struktur proyek Android
-        run: |
-          mkdir -p app/src/main/java/com/noveltranslator
-          cp app-build.gradle.kts app/build.gradle.kts
-          cp AndroidManifest.xml app/src/main/AndroidManifest.xml
-          cp MainActivity.kt app/src/main/java/com/noveltranslator/MainActivity.kt
-
       - name: Build APK
         run: gradle assembleDebug --no-daemon --stacktrace
 
-      - name: Unggah APK
+      - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: novel-translator-apk
+          name: screen-translator-apk
           path: app/build/outputs/apk/debug/app-debug.apk
